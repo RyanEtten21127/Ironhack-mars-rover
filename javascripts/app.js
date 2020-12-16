@@ -4,6 +4,7 @@ let rover = {
   direction: "N",
   x: 0,
   y: 0,
+  travelLog: []
 }
 
 
@@ -41,9 +42,48 @@ function turnRight(rover) {
 }
 
 // Iteration 3
-let roverPosition = ["x", "y"]
 
 function moveForward(rover) {
-  console.log("moveForward was called")
+  
+  if(rover.direction === "N"){
+    rover.y--;
+  }
+  else if(rover.direction === "S"){
+    rover.y++;
+  }
+  else if(rover.direction === "E"){
+    rover.x++;
+  }
+  else if(rover.direction === "W"){
+    rover.x--;
+  }
+
 }
 
+// Iteration 4
+
+function commands(steps){
+
+  // i = 0 -> l => turnLeft()
+  // i = 1 -> l => turnLeft()
+  // i = 2 -> f => moveForward()
+  // i = 3 -> f => moveForward()
+  // i = 4 -> r => turnRight()
+  // i = 5 -> r => turnRight()
+  for(let i = 0; i < steps.length; i++){
+    if(steps.charAt(i) === "l"){
+      turnLeft(rover);
+    } else if(steps.charAt(i) === "r"){
+      turnRight(rover);
+    } else if(steps.charAt(i) === "f"){
+      moveForward(rover);
+    }
+  }
+}
+
+// Iteration 5
+
+rover.travelLog.push(steps.charAt(i));
+
+
+console.log("Travel Log:" rover.travelLog);
